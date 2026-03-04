@@ -9,8 +9,6 @@ Single-page, production-style template for Monolyth with a modern defense-tech a
 - `script.js` - mobile nav toggle, reveal-on-scroll, dynamic footer year
 - `assets/monolyth-emblem-gold.png` - optional Monolyth emblem asset
 - `assets/mission-ops.webp` - operational hero still image
-- `assets/stinkbug-mobile.m4v` - mobile-optimized homepage video
-- `assets/stinkbug-web.mp4` - higher-quality homepage video fallback
 - `favicon.ico`, `favicon-*.png`, `apple-touch-icon.png`, `android-chrome-*.png` - favicon/app icon set
 - `site.webmanifest` - PWA/app metadata
 - `robots.txt` - crawl policy + sitemap reference
