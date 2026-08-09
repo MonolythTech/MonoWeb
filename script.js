@@ -26,6 +26,19 @@ if (topbar) {
 
 const revealItems = document.querySelectorAll(".reveal");
 
+// Fallback path: reveal anything in (or near) the viewport, so content is
+// never left hidden if IntersectionObserver callbacks are unavailable.
+const revealInView = () => {
+  const vh = window.innerHeight || document.documentElement.clientHeight || Infinity;
+  revealItems.forEach((item) => {
+    if (item.classList.contains("is-visible")) return;
+    const rect = item.getBoundingClientRect();
+    if (rect.top < vh * 0.92 && rect.bottom > 0) {
+      item.classList.add("is-visible");
+    }
+  });
+};
+
 if ("IntersectionObserver" in window) {
   const observer = new IntersectionObserver(
     (entries, obs) => {
@@ -39,9 +52,11 @@ if ("IntersectionObserver" in window) {
   );
 
   revealItems.forEach((item) => observer.observe(item));
-} else {
-  revealItems.forEach((item) => item.classList.add("is-visible"));
 }
+
+window.addEventListener("scroll", revealInView, { passive: true });
+window.addEventListener("resize", revealInView, { passive: true });
+revealInView();
 
 const yearEl = document.getElementById("year");
 if (yearEl) {
