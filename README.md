@@ -1,55 +1,52 @@
-# Monolyth GitHub Pages Template
+# web — monolythtech.com
 
-Single-page, production-style template for Monolyth with a modern defense-tech aesthetic.
+The Monolyth public website. A single static page, no build step, served by GitHub
+Pages straight from `main`.
 
-## Files
+**This repository is live.** A commit to `main` publishes to
+[monolythtech.com](https://monolythtech.com) within a minute or two. There is no staging
+environment — work on a branch and merge deliberately.
 
-- `index.html` - site structure and copy
-- `styles.css` - visual system, responsive layout, animations
-- `script.js` - mobile nav toggle, reveal-on-scroll, dynamic footer year
-- `assets/monolyth-emblem-gold.png` - optional Monolyth emblem asset
-- `assets/mission-ops.webp` - operational hero still image
-- `favicon.ico`, `favicon-*.png`, `apple-touch-icon.png`, `android-chrome-*.png` - favicon/app icon set
-- `site.webmanifest` - PWA/app metadata
-- `robots.txt` - crawl policy + sitemap reference
-- `sitemap.xml` - XML sitemap for search indexing
-- `assets/og-monolyth.jpg` - social preview image (Open Graph/Twitter)
+This repository is public. Everything committed here is readable by anyone — treat it
+accordingly, and keep internal detail out of it.
 
-## Quick start (local)
+## Before you change the copy
+
+Marketing language is a compliance input, not just copy. Export classification is driven by
+described capability, and terms like *counter-UAS*, *SIGINT*, *electronic warfare* and
+*threat geolocation* are classification-relevant. Copy changes are reviewed against the
+legal and compliance guidance in the internal record before they reach `main`.
+
+## Layout
+
+| Path | What |
+|---|---|
+| `index.html` | the page — structure and all copy |
+| `styles.css` | visual system, responsive layout, animations |
+| `script.js` | mobile nav toggle, reveal-on-scroll, footer year |
+| `CNAME` | the custom domain — **do not delete**, removing it drops monolythtech.com |
+| `assets/` | emblem, hero still, social preview image |
+| `favicon.*`, `apple-touch-icon.png`, `android-chrome-*.png`, `site.webmanifest` | icon set and PWA metadata |
+| `robots.txt`, `sitemap.xml` | crawl policy and sitemap |
+
+## Working on it
 
 ```bash
 python3 -m http.server 4173
 ```
 
-Open `http://localhost:4173`.
+Then open `http://localhost:4173`. What you see locally is what Pages will serve — same
+files, no transform.
 
-## Publish on GitHub Pages
+To publish: commit to `main` and push. Pages rebuilds on its own. HTTPS is enforced and the
+certificate covers both `monolythtech.com` and `www.monolythtech.com`.
 
-1. Push this folder to a GitHub repository.
-2. In GitHub, open `Settings` -> `Pages`.
-3. Under `Build and deployment`, set:
-   - `Source`: `Deploy from a branch`
-   - `Branch`: `main` (or your branch), folder `/ (root)`
-4. Save and wait for deployment.
-5. GitHub will provide the public URL (or attach your custom domain there).
+If you change the domain, update all of: `CNAME`, the `canonical` link, `og:url`,
+the absolute `og:image` URL, `sitemap.xml` `<loc>` entries, and the sitemap line in
+`robots.txt`. They are easy to miss individually and wrong metadata outlives the change.
 
-## Customize before launch
+## Open branches
 
-1. Replace contact details and copy in `index.html`.
-2. Update SEO metadata if your final domain differs:
-   - `canonical` URL
-   - `og:url`
-   - `og:image` absolute URL
-   - `sitemap.xml` `<loc>` entries
-   - `robots.txt` sitemap line
-3. Update metadata:
-   - `<title>`
-   - `<meta name="description">`
-   - Optional social tags (`og:*`, `twitter:*`)
-4. Add brand assets (logo, favicon, photography) as needed.
-
-## Optional hardening
-
-1. Add analytics (`Plausible`, `GA4`, etc.).
-2. Add a lightweight CSP and security headers if served behind Cloudflare/Vercel/Netlify.
-3. Connect form submissions to CRM or ticketing workflow.
+- `draft/site-rewrite` — a repositioning of the copy ("the premier integrator of unmanned
+  systems") plus approach/company/contact sections and a rewritten stylesheet. Recovered
+  from an uncommitted working tree on the build machine, unreviewed, not merged.
